@@ -15,7 +15,7 @@ var pug_match_html=/["&<>]/;function entries_template(locals) {var pug_html = ""
       var entry = $$obj[pug_index0];
       pug_html = pug_html + "\u003Cdiv class=\"entry\"\u003E\u003Cdiv class=\"time\"\u003E" + (pug_escape(null == (pug_interp = formatTime(new Date(entry.created_at))) ? "" : pug_interp)) + "\u003C\u002Fdiv\u003E\u003Cpre class=\"content\"\u003E" + 
       (pug_escape(null == (pug_interp = entry.content) ? "" : pug_interp)) + "\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E";
-      pug_html = pug_html + "\u003Cbutton class=\"btn_del\" id=\"btn$$l\"\u003E";
+      pug_html = pug_html + "\u003Cbutton class=\"btn_del\" id=\"btn$$l\"\u003E"+"X"+"\u003C\u002Fdiv\u003E";
     }
   }
 }).call(this);
