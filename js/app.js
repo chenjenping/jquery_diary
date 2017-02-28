@@ -38,7 +38,8 @@ $(function () {
             } else {
                 localStorage.setItem(namespace, JSON.stringify(data));
             }
-        }
+        },
+        testtt: function (){alert("test");}
     };
 
     var app = {
@@ -97,3 +98,21 @@ $(function () {
 
     app.init();
 });
+function diary_de(Ctime){util.testtt();//alert(Ctime);
+}
+
+
+/*
+{"theme":"default","entries":[
+{"content":"hi","created_at":"2017-02-27T14:32:49.163Z"},
+{"content":"yo","created_at":"2017-02-27T14:32:42.673Z"},
+{"content":"wow","created_at":"2017-02-28T06:27:58.989Z"}
+]}
+
+
+{"theme":"clear","entries":[
+{"content":"wow","created_at":"2017-02-28T06:27:58.989Z"},
+{"content":"hi","created_at":"2017-02-27T14:32:49.163Z"},
+{"content":"yo","created_at":"2017-02-27T14:32:42.673Z"},
+{"content":"test","created_at":"2017-02-28T06:32:37.202Z"}
+]}*/
