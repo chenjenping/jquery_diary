@@ -70,8 +70,23 @@ $(function () {
             var entries = this.data.entries.sort(function(a, b) {
                 return (a.created_at < b.created_at) ? 1 : -1;
             });
+           
+            for (var i = 0; i < this.data.entries.length; i++) {
+                var counter = this.data.entries[i];
+                //alert(counter.content);
+            }
             $('#diary').html(this.entriesTemplate({entries: entries, formatTime: util.formatTime}));
+            for (var i = 0; i < this.data.entries.length; i++){
+                var byId = document.getElementById('#btn'+i);
+
+                byId.onclick = this.diary_del(this.data.entries[i].created_at);
+               // alert(this.data.entries[i].created_at);
+               //$('#btn'+i).click( this.diary_del(this.data.entries[i].created_at));
+            }
             $('#new_entry').focus();
+        },
+        diary_del: function (Ctime) {
+            alert("no..");
         },
         preventDefault: function (e) {
             if (e.which === ENTER_KEY && !e.shiftKey) {
@@ -98,9 +113,8 @@ $(function () {
 
     app.init();
 });
-function diary_de(Ctime){util.testtt();//alert(Ctime);
-}
 
+// $('#button').click(function()){ $('#main').css('font-size','40px');}
 
 /*
 {"theme":"default","entries":[
