@@ -78,15 +78,18 @@ $(function () {
             $('#diary').html(this.entriesTemplate({entries: entries, formatTime: util.formatTime}));
             for (var i = 0; i < this.data.entries.length; i++){
                 var byId = document.getElementById('#btn'+i);
-
-                byId.onclick = this.diary_del(this.data.entries[i].created_at);
-               // alert(this.data.entries[i].created_at);
-               //$('#btn'+i).click( this.diary_del(this.data.entries[i].created_at));
+                // byId.onclick = this.diary_del(this.data.entries[i].created_at);
+                // alert(this.data.entries[i].created_at);
+                //$('#btn'+i).click( this.diary_del );
+                var whichone =  $('input[id="selector"]');
+                //var whichone = document.getElementById('selector');
+                $('#btn'+i).click( function () {whichone.val(i); alert(whichone.val() + " , " +  i); })
             }
             $('#new_entry').focus();
         },
-        diary_del: function (Ctime) {
-            alert("no..");
+        diary_del: function () {
+            var whichone = document.getElementById('#selector');
+            alert(whichone.target.val().trim());
         },
         preventDefault: function (e) {
             if (e.which === ENTER_KEY && !e.shiftKey) {
