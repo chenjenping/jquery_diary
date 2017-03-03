@@ -1,4 +1,4 @@
-$(function () {
+
     'use strict';
 
     var ENTER_KEY = 13;
@@ -38,8 +38,7 @@ $(function () {
             } else {
                 localStorage.setItem(namespace, JSON.stringify(data));
             }
-        },
-        testtt: function (){alert("test");}
+        }
     };
 
     var app = {
@@ -70,26 +69,19 @@ $(function () {
             var entries = this.data.entries.sort(function(a, b) {
                 return (a.created_at < b.created_at) ? 1 : -1;
             });
-           
-            for (var i = 0; i < this.data.entries.length; i++) {
-                var counter = this.data.entries[i];
-                //alert(counter.content);
-            }
             $('#diary').html(this.entriesTemplate({entries: entries, formatTime: util.formatTime}));
-            for (var i = 0; i < this.data.entries.length; i++){
-                var byId = document.getElementById('#btn'+i);
-                // byId.onclick = this.diary_del(this.data.entries[i].created_at);
-                // alert(this.data.entries[i].created_at);
-                //$('#btn'+i).click( this.diary_del );
-                var whichone =  $('input[id="selector"]');
-                //var whichone = document.getElementById('selector');
-                $('#btn'+i).click( function () {whichone.val(i); alert(whichone.val() + " , " +  i); })
-            }
             $('#new_entry').focus();
         },
-        diary_del: function () {
-            var whichone = document.getElementById('#selector');
-            alert(whichone.target.val().trim());
+        diary_del: function (c) {
+            this.data = util.store('jquery_diary');
+            for (var i = 0; i < this.data.entries.length; i++){
+                if (this.data.entries[i].created_at == c){
+                    alert("- "+this.data.entries[i].content + " - has been slain.");
+                    this.data.entries.splice(i,1);
+                }
+            }
+            util.store('jquery_diary', this.data);
+            this.render();
         },
         preventDefault: function (e) {
             if (e.which === ENTER_KEY && !e.shiftKey) {
@@ -115,21 +107,3 @@ $(function () {
     };
 
     app.init();
-});
-
-// $('#button').click(function()){ $('#main').css('font-size','40px');}
-
-/*
-{"theme":"default","entries":[
-{"content":"hi","created_at":"2017-02-27T14:32:49.163Z"},
-{"content":"yo","created_at":"2017-02-27T14:32:42.673Z"},
-{"content":"wow","created_at":"2017-02-28T06:27:58.989Z"}
-]}
-
-
-{"theme":"clear","entries":[
-{"content":"wow","created_at":"2017-02-28T06:27:58.989Z"},
-{"content":"hi","created_at":"2017-02-27T14:32:49.163Z"},
-{"content":"yo","created_at":"2017-02-27T14:32:42.673Z"},
-{"content":"test","created_at":"2017-02-28T06:32:37.202Z"}
-]}*/
