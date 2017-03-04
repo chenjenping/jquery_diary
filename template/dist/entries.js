@@ -17,7 +17,7 @@ function pug_escape(e){
   if ('number' == typeof $$obj.length) {
       for (var pug_index0 = 0; pug_index0 < $$obj.length; pug_index0++) {
         var entry = $$obj[pug_index0];
-        pug_html = pug_html + "\u003Cdiv class=\"entry\"\u003E\u003Cdiv class=\"time\"\u003E" + (pug_escape(null == (pug_interp = formatTime(new Date(entry.created_at))) ? "" : pug_interp)) + "\u003Cbutton class=\"btn_del\" id=\"btn$$l\" onclick=\"app.diary_del(\'" + entry.created_at + "\')\"\u003EX\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E\u003Cpre class=\"content\"\u003E" + 
+        pug_html = pug_html + "\u003Cdiv class=\"entry\"\u003E\u003Cdiv class=\"time\"\u003E" + (pug_escape(null == (pug_interp = formatTime(new Date(entry.created_at))) ? "" : pug_interp)) + "\u003Cbutton class=\"btn_del\" id=\"btn" + $$l + "\" name=\"btn" + $$l + "\" \u003EX\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E\u003Cpre class=\"content\"\u003E" + 
         (pug_escape(null == (pug_interp = entry.content) ? "" : pug_interp)) + "\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E";
         $$l++;
       }
@@ -26,7 +26,7 @@ function pug_escape(e){
     for (var pug_index0 in $$obj) {
       $$l++;
       var entry = $$obj[pug_index0];
-      pug_html = pug_html + "\u003Cdiv class=\"entry\"\u003E\u003Cdiv class=\"time\"\u003E" + (pug_escape(null == (pug_interp = formatTime(new Date(entry.created_at))) ? "" : pug_interp)) + "\u003Cbutton class=\"btn_del\" id=\"btn$$l\" onclick=\"app.diary_del(\'" + entry.created_at + "\')\"\u003EX\u003C\u002Fbutton\u003E\"\u003C\u002Fdiv\u003E\u003Cpre class=\"content\"\u003E" + 
+      pug_html = pug_html + "\u003Cdiv class=\"entry\"\u003E\u003Cdiv class=\"time\"\u003E" + (pug_escape(null == (pug_interp = formatTime(new Date(entry.created_at))) ? "" : pug_interp)) + "\u003Cbutton class=\"btn_del\" id=\"btn" + $$l + "\" name=\"btn" + $$l + "\" \u003EX\u003C\u002Fbutton\u003E\"\u003C\u002Fdiv\u003E\u003Cpre class=\"content\"\u003E" + 
       (pug_escape(null == (pug_interp = entry.content) ? "" : pug_interp)) + "\u003C\u002Fpre\u003E\u003C\u002Fdiv\u003E";
     }
   }
