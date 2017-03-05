@@ -1,3 +1,4 @@
+
 $(function () {
     'use strict';
 
@@ -53,6 +54,7 @@ $(function () {
             $('#new_entry').on('keydown', this.preventDefault.bind(this));
             $('#new_entry').on('keyup', this.create.bind(this));
             $('#theme').on('change', this.selectTheme.bind(this));
+            $('body').on('click', '#trash_can', this.delete.bind(this));
         },
         setTheme: function (theme) {
             this.data.theme = theme;
@@ -92,6 +94,19 @@ $(function () {
             });
             $input.val('');
             this.render();
+        },
+        delete: function (e) {
+          console.log("test");
+          var $id = $(e.target).attr('value');
+          console.log("value = " + $id);
+
+          for(var i=0;i<this.data.entries.length;i++){
+            if(i == $id){
+              console.log("got it");
+              this.data.entries.splice(i,1);
+            }
+          }
+          this.render();
         }
     };
 
