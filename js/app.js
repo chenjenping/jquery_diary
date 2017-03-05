@@ -55,6 +55,7 @@ $(function () {
             $('#new_entry').on('keyup', this.create.bind(this));
             $('#theme').on('change', this.selectTheme.bind(this));
             $('body').on('click', '#trash_can', this.delete.bind(this));
+            $('#datepicker').on('change', this.renderTheEvent.bind(this));
         },
         setTheme: function (theme) {
             this.data.theme = theme;
@@ -107,7 +108,33 @@ $(function () {
             }
           }
           this.render();
-        }
+        },
+        renderTheEvent: function(e){
+          console.log("the date changed");
+          var $chooseDate = $(e.target).val();
+          console.log($chooseDate);
+          console.log(this.data.entries[0].created_at);
+          for(var i=0;i<this.data.entries.length;i++){
+            var dataDate = this.data.entries[i].created_at.slice(0,10);
+            console.log(dataDate);
+            var event = [];
+            if(dataDate == $chooseDate){
+              console.log("got it");
+              event.push({
+                content: this.data.entries[i].content,
+                created_at: this.data.entries[i].created_at
+              })
+            }
+          }
+          this.renderDateEvent(event);
+        },
+        renderDateEvent: function (event) {
+            var events = event.sort(function(a, b) {
+                return (a.created_at < b.created_at) ? 1 : -1;
+            });
+            $('#diary').html(this.entriesTemplate({entries: events, formatTime: util.formatTime}));
+            $('#new_entry').focus();
+        },
     };
 
     app.init();

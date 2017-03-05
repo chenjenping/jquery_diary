@@ -7,11 +7,20 @@
         <link rel="stylesheet" href="css/theme/default.css">
         <link rel="stylesheet" href="css/theme/clear.css">
         <link rel="stylesheet" href="css/theme/mytheme.css">
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="-1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
         <div id="app">
             <div id="header">
                 <h1>jQuery Diary</h1>
+            </div>
+            <div class="datetest">
+              <p class="datag">
+                Date: <input type="text" id="datepicker" value="">
+              </p>
             </div>
             <div id="editor">
                 <select id="theme">
@@ -26,5 +35,21 @@
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="template/dist/entries.js"></script>
         <script src="js/app.js"></script>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+          $(function() {
+            //16-jQuery datepicker 設定 firstDay defaultDate
+            $("#datepicker").datepicker({
+              //設置一週中的第一天。星期天為0，星期一為1，以此類推。
+              firstDay : 1,//設定日曆第一格是星期一
+              //設置默認加載完後第一次顯示時選中的日期。可以是Date對象，或者是數字（從今天算起，例如+7），
+              //或者有效的字符串('y'代表年, 'm'代表月, 'w'代表周, 'd'代表日, 例如：'+1m +7d')。
+              //限第一次開啟日曆框顯示選中的日期
+              dateFormat: 'yy-mm-dd'
+            });
+          });
+        </script>
     </body>
 </html>
