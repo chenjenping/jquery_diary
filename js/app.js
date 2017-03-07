@@ -70,7 +70,24 @@ $(function () {
                 return (a.created_at < b.created_at) ? 1 : -1;
             });
             $('#diary').html(this.entriesTemplate({entries: entries, formatTime: util.formatTime}));
+            const that = this;
+            for(let i = 0; i < this.data.entries.length; i++){
+                // that = app, this = btn$i
+                $('#btn'+i).click(function() {that.diaryDel(this.name);});
+            }
             $('#new_entry').focus();
+        },
+        diaryDel: function (whichBtn) {
+            // whichBtn = "btn(按鈕編號),拿n來split並取回傳陣列第二個值即為按鈕編號"
+            console.log("hello , " + whichBtn.split('n')[1]); // 單純檢查錯誤用
+            this.data.entries.splice(whichBtn.split('n')[1], 1);
+            /*這段保留以備不時之需for (var i = 0; i < this.data.entries.length; i++){
+                if (this.data.entries[i].created_at == c){
+                    alert("- "+this.data.entries[i].content + " - has been slain.");
+                    this.data.entries.splice(i,1);
+                }
+            }*/
+            this.render();
         },
         preventDefault: function (e) {
             if (e.which === ENTER_KEY && !e.shiftKey) {
@@ -94,6 +111,5 @@ $(function () {
             this.render();
         }
     };
-
     app.init();
-});
+})

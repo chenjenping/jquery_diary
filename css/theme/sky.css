@@ -1,0 +1,15 @@
+body.sky {
+    background-color: #ecffff;
+}
+
+body.sky h1 {
+    color: #80ffff;
+}
+
+body.sky .entry {
+    background-color: #fdfdfd;
+}
+
+body.sky .entry .time {
+    color: #888;
+}
