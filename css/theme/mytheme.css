@@ -1,0 +1,19 @@
+body.mytheme {
+    background-color: #FFDEAD;
+}
+
+body.mytheme h1 {
+    color: #696969;
+}
+
+body.mytheme .entry {
+    background-color: #FDFDFD;
+}
+
+body.mytheme .entry .time {
+    color: #888;
+}
+
+body.mytheme .entry .content {
+    color: #2F4F4F;
+}

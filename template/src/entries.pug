@@ -1,4 +1,5 @@
-each entry in entries
+each entry, index in entries
     div.entry
         .time= formatTime(new Date(entry.created_at))
+          img.trash_can(value=index src="https://cdn3.iconfinder.com/data/icons/tools-solid-icons-vol-2/72/59-512.png" height=22 width=22)
         pre.content= entry.content
